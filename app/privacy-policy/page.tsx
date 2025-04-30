@@ -79,9 +79,9 @@ export default function PrivacyPolicy() {
               If you have any questions about this Privacy Policy, please contact us at:
             </p>
             <p className="text-foreground/70">
-              Email: info@powerq.co.ke<br />
-              Phone: +254 700 000 000<br />
-              Address: Nairobi, Kenya
+            Email: powerQ.ke@gmail.com<br />
+            Phone: +254 717052939<br />
+            Address: Nairobi, Kenya
             </p>
           </section>
         </div>
