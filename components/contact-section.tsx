@@ -102,8 +102,8 @@ const ContactSection = () => {
     {
       icon: <Mail className="h-5 w-5 text-blue-500" />,
       title: "Email",
-      value: "lavendadoris20@gmail.com",
-      link: "mailto:lavendadoris20@gmail.com",
+      value: "info@powerq.com",
+      link: "mailto:info@powerq.com",
     },
     {
       icon: <Phone className="h-5 w-5 text-green-500" />,

@@ -6,45 +6,95 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Github, Linkedin, Twitter } from "lucide-react"
 import Image from "next/image"
 
+interface TeamMember {
+  name: string;
+  role: string;
+  university: string;
+  image: string;
+  socialLinks: {
+    name: string;
+    url: string;
+    icon: React.ComponentType<{ className?: string }>;
+  }[];
+}
+
 const TeamSection = () => {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: false, amount: 0.3 })
 
-  const teamMembers = [
+  const teamMembers: TeamMember[] = [
     {
       name: "Opondo Broono",
       role: "Power Engineer",
       university: "Kenyatta University",
       image: "/broono.png",
-      socialLinks: {
-        linkedin: "#",
-        twitter: "#",
-        github: "#",
-      },
+      socialLinks: [
+        {
+          name: "LinkedIn",
+          url: "#",
+          icon: Linkedin
+        },
+        {
+          name: "Twitter",
+          url: "#",
+          icon: Twitter
+        },
+        {
+          name: "GitHub",
+          url: "#",
+          icon: Github
+        }
+      ]
     },
 
-    {
-      name: "Lavenda Shipichira",
-      role: "Data Scientist",
-      university: "Kenyatta University",
-      image: "/lavenda.png",
-      socialLinks: {
-        linkedin: "#",
-        twitter: "#",
-        github: "#",
-      },
-    },
    
     {
-      name: "Team Member",
+      name: "Irene Chebet Korir",
+      role: "Data Scientist",
+      university: "Kenyatta University",
+      image: "/irene.png",
+      socialLinks: [
+        {
+          name: "LinkedIn",
+          url: "#",
+          icon: Linkedin
+        },
+        {
+          name: "Twitter",
+          url: "#",
+          icon: Twitter
+        },
+        {
+          name: "GitHub",
+          url: "#",
+          icon: Github
+        }
+      ]
+    },
+
+    
+    {
+      name: "Lavenda Shipichira",
       role: "Domain Expert",
       university: "Kenyatta University",
-      image: "/placeholder.svg?height=300&width=300",
-      socialLinks: {
-        linkedin: "#",
-        twitter: "#",
-        github: "#",
-      },
+      image: "/lavenda.png",
+      socialLinks: [
+        {
+          name: "LinkedIn",
+          url: "#",
+          icon: Linkedin
+        },
+        {
+          name: "Twitter",
+          url: "#",
+          icon: Twitter
+        },
+        {
+          name: "GitHub",
+          url: "#",
+          icon: Github
+        }
+      ]
     },
   ]
 
@@ -68,17 +118,18 @@ const TeamSection = () => {
   }
 
   return (
-    <section id="team" ref={ref} className="py-20 bg-muted/30">
-      <div className="container mx-auto px-4">
+    <section id="team" ref={ref} className="py-8 sm:py-12 md:py-20 relative overflow-hidden min-h-screen">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-8 sm:mb-12 md:mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Team</h2>
-          <p className="text-foreground/70 max-w-2xl mx-auto">
-            Meet the experts behind PowerQ&apos;s innovative technology and vision.
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">Meet Our Team</h2>
+          <p className="text-foreground/70 max-w-2xl mx-auto text-sm sm:text-base">
+            Our team combines expertise in power systems, AI, and software development to create innovative
+            solutions.
           </p>
         </motion.div>
 
@@ -86,54 +137,55 @@ const TeamSection = () => {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8"
         >
           {teamMembers.map((member, index) => (
-            <motion.div key={index} variants={itemVariants}>
-              <Card className="h-full overflow-hidden hover:shadow-lg transition-shadow duration-300">
-                <CardContent className="p-0">
-                  <div className="relative w-full pt-[100%]">
-                    <div className="absolute inset-0">
-                      <Image
-                        src={member.image}
-                        alt={member.name}
-                        fill
-                        style={{ objectFit: 'contain', padding: '1rem' }}
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        priority={index < 2}
-                        className="rounded-t-lg"
-                      />
-                    </div>
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4">
-                      <div className="flex space-x-4">
-                        <a
-                          href={member.socialLinks.linkedin}
-                          className="text-white hover:text-blue-400 transition-colors"
-                        >
-                          <Linkedin className="h-5 w-5" />
-                        </a>
-                        <a
-                          href={member.socialLinks.twitter}
-                          className="text-white hover:text-blue-400 transition-colors"
-                        >
-                          <Twitter className="h-5 w-5" />
-                        </a>
-                        <a
-                          href={member.socialLinks.github}
-                          className="text-white hover:text-blue-400 transition-colors"
-                        >
-                          <Github className="h-5 w-5" />
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="p-6 text-center">
-                    <h3 className="text-xl font-semibold mb-1">{member.name}</h3>
-                    <p className="text-foreground/70 mb-1">{member.role}</p>
-                    <p className="text-sm text-foreground/50">{member.university}</p>
-                  </div>
-                </CardContent>
-              </Card>
+            <motion.div
+              key={member.name}
+              variants={itemVariants}
+              className="bg-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
+            >
+              <div className="relative aspect-square w-full bg-muted">
+                <Image
+                  src={member.image}
+                  alt={member.name}
+                  fill
+                  className="object-contain p-2 sm:p-4 md:p-6"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  priority={true}
+                  quality={100}
+                  loading="eager"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.src = "/placeholder.svg?height=300&width=300";
+                  }}
+                  style={{
+                    objectFit: 'contain',
+                    objectPosition: 'center',
+                    backgroundColor: 'var(--muted)',
+                    maxWidth: '100%',
+                    maxHeight: '100%'
+                  }}
+                />
+              </div>
+              <div className="p-3 sm:p-4 md:p-6">
+                <h3 className="text-base sm:text-lg md:text-xl font-semibold mb-1">{member.name}</h3>
+                <p className="text-xs sm:text-sm md:text-base text-primary mb-2">{member.role}</p>
+                <p className="text-xs sm:text-sm text-foreground/70 mb-4">{member.university}</p>
+                <div className="flex space-x-3 sm:space-x-4">
+                  {member.socialLinks.map((link) => (
+                    <a
+                      key={link.name}
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-foreground/70 hover:text-primary transition-colors"
+                    >
+                      <link.icon className="w-4 h-4 sm:w-5 sm:h-5" />
+                    </a>
+                  ))}
+                </div>
+              </div>
             </motion.div>
           ))}
         </motion.div>
@@ -142,21 +194,21 @@ const TeamSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6, delay: 0.6 }}
-          className="mt-16 text-center"
+          className="mt-8 sm:mt-12 md:mt-16 text-center"
         >
-          <h3 className="text-2xl font-semibold mb-4">Our Expertise</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
+          <h3 className="text-xl sm:text-2xl font-semibold mb-4">Our Expertise</h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 max-w-3xl mx-auto">
             <div className="p-4 rounded-lg bg-blue-50 dark:bg-blue-950/30">
-              <h4 className="font-medium mb-2">Data Scientists</h4>
-              <p className="text-sm text-foreground/70">Experts in machine learning and predictive analytics</p>
+              <h4 className="font-medium mb-2 text-sm sm:text-base">Data Scientists</h4>
+              <p className="text-xs sm:text-sm text-foreground/70">Experts in machine learning and predictive analytics</p>
             </div>
             <div className="p-4 rounded-lg bg-green-50 dark:bg-green-950/30">
-              <h4 className="font-medium mb-2">Power Engineers</h4>
-              <p className="text-sm text-foreground/70">Specialists in electrical systems and grid infrastructure</p>
+              <h4 className="font-medium mb-2 text-sm sm:text-base">Power Engineers</h4>
+              <p className="text-xs sm:text-sm text-foreground/70">Specialists in electrical systems and grid infrastructure</p>
             </div>
             <div className="p-4 rounded-lg bg-purple-50 dark:bg-purple-950/30">
-              <h4 className="font-medium mb-2">Domain Experts</h4>
-              <p className="text-sm text-foreground/70">
+              <h4 className="font-medium mb-2 text-sm sm:text-base">Domain Experts</h4>
+              <p className="text-xs sm:text-sm text-foreground/70">
                 Industry veterans with deep knowledge of Kenya&apos;s energy sector
               </p>
             </div>
