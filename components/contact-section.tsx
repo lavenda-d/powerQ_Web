@@ -56,7 +56,7 @@ const ContactSection = () => {
       console.log('Using template: template_wyfo3sy')
 
       const result = await emailjs.send(
-        'service_bqz797r',
+        'service_494yogb',
         'template_wyfo3sy',
         templateParams,
         'f9RmFJdLZ2740uOHu'
@@ -210,7 +210,7 @@ const ContactSection = () => {
                   <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    className="bg-green-50 dark:bg-green-900/30 p-8 rounded-lg text-center h-[350px] flex flex-col items-center justify-center"
+                    className="bg-green-50 dark:bg-green-900/30 p-8 rounded-lg text-center h-[350px] flex flex-col items-center justify-center relative z-[10000]"
                   >
                     <div className="h-16 w-16 rounded-full bg-green-100 dark:bg-green-800/50 flex items-center justify-center mb-4">
                       <Check className="h-8 w-8 text-green-600 dark:text-green-400" />
@@ -219,7 +219,10 @@ const ContactSection = () => {
                     <p className="text-foreground/70 mb-6">
                       Thank you for reaching out. We'll get back to you as soon as possible.
                     </p>
-                    <Button onClick={() => setIsSubmitted(false)} className="bg-green-600 hover:bg-green-700">
+                    <Button 
+                      onClick={() => setIsSubmitted(false)} 
+                      className="bg-green-600 hover:bg-green-700 relative z-[10001] pointer-events-auto"
+                    >
                       Send Another Message
                     </Button>
                   </motion.div>

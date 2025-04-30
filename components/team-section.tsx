@@ -31,17 +31,17 @@ const TeamSection = () => {
       socialLinks: [
         {
           name: "LinkedIn",
-          url: "#",
+          url: "https://www.linkedin.com/company/powerq-ke",
           icon: Linkedin
         },
         {
           name: "Twitter",
-          url: "#",
+          url: "https://twitter.com/powerq_ke",
           icon: Twitter
         },
         {
           name: "GitHub",
-          url: "#",
+          url: "https://github.com/powerq-ke",
           icon: Github
         }
       ]
@@ -50,23 +50,23 @@ const TeamSection = () => {
    
     {
       name: "Irene Chebet Korir",
-      role: "Data Scientist",
+      role: "Domain Expert",
       university: "Kenyatta University",
       image: "/irene.png",
       socialLinks: [
         {
           name: "LinkedIn",
-          url: "#",
+          url: "https://www.linkedin.com/company/powerq-ke",
           icon: Linkedin
         },
         {
           name: "Twitter",
-          url: "#",
+          url: "https://twitter.com/powerq_ke",
           icon: Twitter
         },
         {
           name: "GitHub",
-          url: "#",
+          url: "https://github.com/powerq-ke",
           icon: Github
         }
       ]
@@ -75,23 +75,23 @@ const TeamSection = () => {
     
     {
       name: "Lavenda Shipichira",
-      role: "Domain Expert",
+      role: "Data Scientist",
       university: "Kenyatta University",
       image: "/lavenda.png",
       socialLinks: [
         {
           name: "LinkedIn",
-          url: "#",
+          url: "https://www.linkedin.com/company/powerq-ke",
           icon: Linkedin
         },
         {
           name: "Twitter",
-          url: "#",
+          url: "https://twitter.com/powerq_ke",
           icon: Twitter
         },
         {
           name: "GitHub",
-          url: "#",
+          url: "https://github.com/powerq-ke",
           icon: Github
         }
       ]
@@ -172,17 +172,16 @@ const TeamSection = () => {
                 <h3 className="text-base sm:text-lg md:text-xl font-semibold mb-1">{member.name}</h3>
                 <p className="text-xs sm:text-sm md:text-base text-primary mb-2">{member.role}</p>
                 <p className="text-xs sm:text-sm text-foreground/70 mb-4">{member.university}</p>
-                <div className="flex space-x-3 sm:space-x-4">
+                <div className="flex space-x-3 sm:space-x-4 relative z-50">
                   {member.socialLinks.map((link) => (
-                    <a
+                    <button
                       key={link.name}
-                      href={link.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-foreground/70 hover:text-primary transition-colors"
+                      onClick={() => window.open(link.url, '_blank', 'noopener,noreferrer')}
+                      className="relative z-50 inline-flex items-center justify-center w-8 h-8 rounded-full text-foreground/70 hover:text-primary hover:bg-muted transition-all duration-200 cursor-pointer pointer-events-auto"
+                      aria-label={`Visit ${member.name}'s ${link.name} profile`}
                     >
-                      <link.icon className="w-4 h-4 sm:w-5 sm:h-5" />
-                    </a>
+                      <link.icon className="w-4 h-4 sm:w-5 sm:h-5 pointer-events-none" />
+                    </button>
                   ))}
                 </div>
               </div>

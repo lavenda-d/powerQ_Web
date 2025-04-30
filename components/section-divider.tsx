@@ -15,8 +15,8 @@ const SectionDivider = ({ light = false }: SectionDividerProps) => {
         transition={{ duration: 0.7 }}
         viewport={{ once: true }}
         className={`absolute inset-x-0 bottom-0 h-16 ${
-          light ? "bg-muted/30" : "bg-background"
-        } -skew-y-3 transform origin-bottom-right z-10`}
+          light ? "bg-muted/10" : "bg-background/95"
+        } -skew-y-3 transform origin-bottom-right z-10 backdrop-blur-sm`}
       />
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -24,8 +24,8 @@ const SectionDivider = ({ light = false }: SectionDividerProps) => {
         transition={{ duration: 0.7, delay: 0.1 }}
         viewport={{ once: true }}
         className={`absolute inset-x-0 bottom-0 h-16 ${
-          light ? "bg-background" : "bg-muted/30"
-        } -skew-y-3 transform origin-bottom-left z-0`}
+          light ? "bg-background/95" : "bg-muted/10"
+        } -skew-y-3 transform origin-bottom-left z-0 backdrop-blur-sm`}
       />
     </div>
   )
